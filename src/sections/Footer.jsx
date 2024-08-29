@@ -1,12 +1,20 @@
 import { copyrightSign } from "../assets/icons";
 import { footerLogo } from "../assets/images";
 import { footerLinks, socialMedia } from "../constants";
+import { motion } from "framer-motion";
+import { fadeIn } from "../variants";
 
 const Footer = () => {
   return (
     <footer className="max-container">
       <div className="flex justify-between items-start gap-20 flex-wrap max-lg:flex-col">
-        <div className="flex flex-col items-start">
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.6 }}
+          className="flex flex-col items-start"
+        >
           <a href="/">
             <img src={footerLogo} alt="Logo" width={150} height={46} />
           </a>
@@ -21,9 +29,15 @@ const Footer = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-1 justify-between lg:gap-10 gap-20 flex-wrap">
+        <motion.div
+          variants={fadeIn("up", 0.4)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.6 }}
+          className="flex flex-1 justify-between lg:gap-10 gap-20 flex-wrap"
+        >
           {footerLinks.map((section) => (
             <div key={section}>
               <h4 className="text-white font-montserrat text-2xl leading-normal font-medium mb-6">
@@ -41,10 +55,16 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      <div className="flex justify-between text-white-400 mt-24 max-sm:flex-col max-sm:items-center">
+      <motion.div
+        variants={fadeIn("up", 0.6)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.6 }}
+        className="flex justify-between text-white-400 mt-24 max-sm:flex-col max-sm:items-center"
+      >
         <div className="flex flex-1 justify-start gap-2 font-montserrat cursor-pointer">
           <img
             src={copyrightSign}
@@ -56,7 +76,7 @@ const Footer = () => {
           <p>Copyright. All rights reserved.</p>
         </div>
         <p className="font-montserrat cursor-pointer">Terms & Conditions</p>
-      </div>
+      </motion.div>
     </footer>
   );
 };
